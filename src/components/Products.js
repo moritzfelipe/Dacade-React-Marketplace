@@ -14,30 +14,32 @@ import MarketPlaceAbi from "../abis/Marketplace.abi.json";
 
 import erc20ABI from "../abis/ERC20.abi.json";
 
-const Products = ({
-  loading,
-  setError,
-  setLoading,
-  setSuccess,
-  clearNotifications,
-}) => {
+import { toast } from "react-toastify";
+
+const Products = () => {
   const { performActions, address, getConnectedKit } = useContractKit();
 
   const [products, setProducts] = useState([]);
+  const [loading, setloading] = useState(false);
 
   useEffect(() => {
     try {
-      if (address) getProducts();
+      if (address) {
+        toast.info("Fetching products");
+
+        getProducts();
+      }
     } catch (error) {
       console.log({ error });
-      setError(error);
+      toast.error(error);
     }
   }, [address]);
 
   // function to get the list of products from the celo blockchain
-  const getProducts = async function () {
+
+  const getProducts = async () => {
     try {
-      setLoading("Fetching products");
+      setloading(true);
 
       const kit = await getConnectedKit();
       const contract = new kit.web3.eth.Contract(
@@ -67,19 +69,16 @@ const Products = ({
       const allProducts = await Promise.all(_products);
 
       setProducts(allProducts);
-
-      clearNotifications();
     } catch (error) {
-      setLoading(null);
       console.log({ error });
-      // throw Error("Something went wrong. Please refresh and try again");
+    } finally {
+      setloading(false);
     }
   };
 
   const addProduct = async ({ name, image, description, location, price }) => {
     try {
-      clearNotifications();
-
+      setloading(true);
       await performActions(async (kit) => {
         const contract = new kit.web3.eth.Contract(
           MarketPlaceAbi,
@@ -99,18 +98,19 @@ const Products = ({
       });
 
       getProducts();
-      setSuccess("Product added successfully");
+      toast.success("Product added successfully");
     } catch (error) {
       console.log({ error });
 
-      setError("Failed to create a product");
+      toast.error("Failed to create a product");
+    } finally {
+      setloading(false);
     }
   };
 
   //  function to initiate transaction
   const buyProduct = async (_index, _price) => {
     try {
-      clearNotifications();
       await performActions(async (kit) => {
         const contract = new kit.web3.eth.Contract(
           MarketPlaceAbi,
@@ -130,12 +130,14 @@ const Products = ({
 
         await contract.methods.buyProduct(_index).send({ from: _address });
         getProducts();
-        setSuccess("Product bought successfully");
+        toast.success("Product bought successfully");
       });
     } catch (error) {
       console.log({ error });
 
-      setError("Failed to purchase product.");
+      toast.error("Failed to purchase product.");
+    } finally {
+      setloading(false);
     }
   };
 
