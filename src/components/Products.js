@@ -8,13 +8,13 @@ import {
 } from "../utils/constants";
 import AddProduct from "./AddProduct";
 import Product from "./Product";
-import { RingLoader } from "react-spinners";
 
 import MarketPlaceAbi from "../abis/Marketplace.abi.json";
 
 import erc20ABI from "../abis/ERC20.abi.json";
 
 import { toast } from "react-toastify";
+import Loader from "./Loader";
 
 const Products = () => {
   const { performActions, address, getConnectedKit } = useContractKit();
@@ -25,7 +25,7 @@ const Products = () => {
   useEffect(() => {
     try {
       if (address) {
-        toast.info("Fetching products");
+        toast.info("Fetching products...");
         getProducts();
         return;
       }
@@ -129,9 +129,11 @@ const Products = () => {
           .send({ from: _address });
 
         await contract.methods.buyProduct(_index).send({ from: _address });
+
         getProducts();
-        toast.success("Product bought successfully");
       });
+
+      toast.success("Product bought successfully");
     } catch (error) {
       console.log({ error });
 
@@ -153,7 +155,7 @@ const Products = () => {
         </a>
       </div>
       <main id="marketplace" className="row">
-        {!loading && (
+        {!loading ? (
           <>
             <AddProduct addProduct={addProduct} />
             {products.map((_product) => (
@@ -165,12 +167,9 @@ const Products = () => {
               />
             ))}
           </>
-        )}
-
-        {loading && (
-          <div class="d-flex justify-content-center ">
-            <RingLoader size={150} />
-          </div>
+        ) : (
+          // display loading component
+          <Loader />
         )}
       </main>
     </>
