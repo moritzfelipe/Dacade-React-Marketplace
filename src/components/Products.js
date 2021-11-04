@@ -26,8 +26,8 @@ const Products = () => {
     try {
       if (address) {
         toast.info("Fetching products");
-
         getProducts();
+        return;
       }
     } catch (error) {
       console.log({ error });

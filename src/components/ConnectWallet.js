@@ -49,7 +49,7 @@ const ConnectWallet = () => {
     if (!address) {
       return connectCeloWallet();
     }
-  }, [address]);
+  }, []);
 
   if (!address) {
     return (
