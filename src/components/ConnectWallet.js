@@ -45,7 +45,6 @@ const ConnectWallet = () => {
   };
 
   useEffect(() => {
-    console.log("use effect");
     if (!address) {
       return connectCeloWallet();
     }
