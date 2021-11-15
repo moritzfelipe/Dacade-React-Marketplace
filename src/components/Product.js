@@ -1,11 +1,12 @@
 import BigNumber from "bignumber.js";
 import React from "react";
 import { ERC20_DECIMALS } from "../utils/constants";
+import Identicons from "./Identicon";
 
 export default function Product(props) {
   const { product, buyProduct } = props;
 
-  const { price, name, description, sold, location, image, index } =
+  const { owner, price, name, description, sold, location, image, index } =
     product;
 
   const _buyProduct = () => {
@@ -15,6 +16,7 @@ export default function Product(props) {
   return (
     <div className="card col-lg-4 col-md-6 col-xs-12 mb-4" key={index}>
       <img className="card-img-top" src={image} alt="..." />
+      <Identicons size={60} address={owner} />
       <div className="position-absolute top-0 end-0 bg-warning mt-4 px-2 py-1 rounded-start">
         {sold} Sold
       </div>

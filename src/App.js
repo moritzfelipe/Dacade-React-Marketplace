@@ -9,6 +9,7 @@ import Address from "./components/Address";
 import CusdBalance from "./components/CusdBalance";
 import Title from "./components/Title";
 import ConnectWallet from "./components/ConnectWallet";
+import DisconnectWallet from "./components/DisconnectWallet";
 
 const App = () => {
   return (
@@ -21,8 +22,9 @@ const App = () => {
           <div className="container-fluid">
             <Title />
             <Address />
-            <CusdBalance />
             <ConnectWallet />
+            <DisconnectWallet />
+            <CusdBalance />
           </div>
         </nav>
 
