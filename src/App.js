@@ -10,14 +10,10 @@ import Notification from "./components/Notifications";
 import Address from "./components/Address";
 import Balance from "./components/Balance";
 import ConnectWallet from "./components/ConnectWallet";
-<<<<<<< HEAD
 import Disconnect from "./components/Disconnect";
 
 import { useBalance } from "./utils/hooks";
 import { useMarketPlaceContract } from "./utils/hooks";
-=======
-import DisconnectWallet from "./components/DisconnectWallet";
->>>>>>> 85dbee6156e9f2bebccaf6c2f812f39bb7238250
 
 const App = () => {
   // create a loading state (not now)
@@ -36,7 +32,6 @@ const App = () => {
         {/* maybe use composition for navbar */}
         <nav className="navbar bg-white navbar-light">
           <div className="container-fluid">
-<<<<<<< HEAD
             <span className="navbar-brand m-0 h4 fw-bold">
               Dacade Marketplace
             </span>
@@ -55,13 +50,6 @@ const App = () => {
               address={address}
               destroy={destroy}
             />
-=======
-            <Title />
-            <Address />
-            <ConnectWallet />
-            <DisconnectWallet />
-            <CusdBalance />
->>>>>>> 85dbee6156e9f2bebccaf6c2f812f39bb7238250
           </div>
         </nav>
 
