@@ -6,13 +6,14 @@ export const truncateAddress = (address) => {
   );
 };
 
-export const disConnectWallet = async (provider) => {
-  console.log({ provider });
-  if (provider.close) {
-    console.log("closing");
-    await provider.close();
-  }
+// export const disConnectWallet = async (provider) => {
+//   console.log({ provider });
+//   if (provider.close) {
+//     console.log("closing");
+//     await provider.close();
+//   }
 
-  console.log("clearing");
-  localStorage.clear();
-};
+//   console.log("clearing");
+//   localStorage.clear();
+// };
+
