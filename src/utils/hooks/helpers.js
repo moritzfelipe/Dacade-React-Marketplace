@@ -26,7 +26,7 @@ export const useBalance = () => {
 
 export const useContract = (abi, contractAddress) => {
   const { getConnectedKit, address } = useContractKit();
-  const [marketPlaceContract, setMarketPlaceContract] = useState(0);
+  const [contract, setContract] = useState(0);
 
   const getContract = useCallback(async () => {
     const kit = await getConnectedKit();
@@ -36,14 +36,14 @@ export const useContract = (abi, contractAddress) => {
       contractAddress
     );
 
-    setMarketPlaceContract(contract);
+    setContract(contract);
   }, [getConnectedKit, abi, contractAddress]);
 
   useEffect(() => {
     if (address) getContract();
   }, [address, getContract]);
 
-  return marketPlaceContract;
+  return contract;
 };
 
 export const useConnected = () => {
