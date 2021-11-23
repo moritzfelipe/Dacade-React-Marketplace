@@ -1,5 +1,5 @@
 import React from "react";
-import { ERC20_DECIMALS } from "../utils/constants";
+import { ERC20_DECIMALS } from "../../utils/constants";
 
 const Balance = ({amount, symbol}) => {
 

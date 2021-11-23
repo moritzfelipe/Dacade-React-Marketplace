@@ -1,7 +1,7 @@
 import BigNumber from "bignumber.js";
 import React from "react";
-import { ERC20_DECIMALS } from "../utils/constants";
-import Identicons from "./Identicon";
+import { ERC20_DECIMALS } from "../../utils/constants";
+import Identicons from "../utils/Identicon";
 
 export default function Product(props) {
   const { product, buyProduct } = props;

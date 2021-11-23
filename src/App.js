@@ -3,14 +3,14 @@ import "@celo-tools/use-contractkit/lib/styles.css";
 
 import { useContractKit } from "@celo-tools/use-contractkit";
 
-import Products from "./components/Products";
+import Products from "./components/marketplace/Products";
 import React from "react";
 
-import Notification from "./components/Notifications";
-import Address from "./components/Address";
-import Balance from "./components/Balance";
-import ConnectWallet from "./components/ConnectWallet";
-import Disconnect from "./components/Disconnect";
+import Notification from "./components/utils/Notifications";
+import Address from "./components/navigation/Address";
+import Balance from "./components/navigation/Balance";
+import ConnectWallet from "./components/navigation/ConnectWallet";
+import Disconnect from "./components/navigation/DisconnectWallet";
 
 import { useBalance } from "./utils/hooks";
 import { useMarketPlaceContract } from "./utils/hooks";

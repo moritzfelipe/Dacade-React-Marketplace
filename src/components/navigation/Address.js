@@ -1,6 +1,6 @@
 import React from "react";
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
-import { truncateAddress } from "../utils/utils";
+import { truncateAddress } from "../../utils/utils";
 
 const Address = (props) => {
   // const changeAccount = () => {};

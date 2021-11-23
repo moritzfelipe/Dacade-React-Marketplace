@@ -3,8 +3,8 @@ import React, { useEffect, useState, useCallback } from "react";
 import AddProduct from "./AddProduct";
 import Product from "./Product";
 import { toast } from "react-toastify";
-import Loader from "./Loader";
-import { getProducts as getProductList, buyProduct, createProduct } from "../utils/product";
+import Loader from "../utils/Loader";
+import { getProducts as getProductList, buyProduct, createProduct } from "../../utils/product";
 
 const Products = (props) => {
   const { performActions, address } = useContractKit();
