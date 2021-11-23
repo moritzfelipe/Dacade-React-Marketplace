@@ -30,13 +30,13 @@ export default function Product(props) {
           <span>{location}</span>
         </p>
         <div className="d-grid gap-2">
-          <a
+          <button
             className="btn btn-lg btn-outline-dark buyBtn fs-6 p-3"
             onClick={_buyProduct}
           >
             Buy for {new BigNumber(price).shiftedBy(-ERC20_DECIMALS).toString()}{" "}
             cUSD
-          </a>
+          </button>
         </div>
       </div>
     </div>
